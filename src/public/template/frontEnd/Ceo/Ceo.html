@@ -1,0 +1,29 @@
+import React from "react";
+import Sidebar from "../../layouts/components/Sidebar/Sidebar";
+import styles from "./Ceo.module.scss"
+import { useParams } from "react-router-dom";
+import AnalystProducts from "./AnalystSale/AnalystSale";
+import AnalystReceipts from "./AnalystReceipts/AnalystReceipts";
+const Ceo = ()=>{
+    const {feature} = useParams()
+    const handleManagerPage = ()=>{
+        if(feature === "sale"){
+            return (
+                <AnalystProducts/>
+            )
+        }else if(feature === "inventory"){
+            return (
+                <AnalystReceipts/>
+            )
+        }
+    };
+    return (
+        <div className={styles.wrapper}>
+            <Sidebar role="ceo"/>
+            <div style={{paddingLeft:"25rem",width:"100%",paddingRight:"2rem"}}>
+                {handleManagerPage()}
+            </div>
+        </div>
+    )
+}
+export default Ceo

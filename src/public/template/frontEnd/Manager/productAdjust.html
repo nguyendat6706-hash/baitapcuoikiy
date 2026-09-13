@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./AdminDemo.css" />
+    <link rel="stylesheet" href="./productAdJust.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <div class="App">
+          <div class="StaffLayout_wrapper__CegPk">
+            <div class="StaffHeader_wrapper__IQw-U">
+              <p class="StaffHeader_title__QxjW4">Dekanta</p>
+              <button class="StaffHeader_signOut__i2pcu">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="arrow-right-from-bracket"
+                  class="svg-inline--fa fa-arrow-right-from-bracket"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  style="width: 2rem; height: 2rem; color: white"
+                ></svg>
+              </button>
+            </div>
+            <div>
+              <div>
+                <div class="Manager_wrapper__vOYy">
+                  <div class="Sidebar_sideBar__CC4MK">
+                    <a
+                      class="MenuItemSidebar_menuItem__56b1m MenuItemSidebar_active__RPq active"
+                      href="./tableProduct.html"
+                      aria-current="page"
+                    >
+                      <span class="MenuItemSidebar_title__LLBtx">Sản Phẩm</span>
+                    </a>
+                    <a
+                      class="MenuItemSidebar_menuItem__56b1m"
+                      href="./tableAddProduct.html"
+                    >
+                      <span class="MenuItemSidebar_title__LLBtx"
+                        >Nhà Cung Cấp</span
+                      >
+                    </a>
+                    <a
+                      class="MenuItemSidebar_menuItem__56b1m"
+                      href="./phieunhapkho.html"
+                    >
+                      <span class="MenuItemSidebar_title__LLBtx"
+                        >Phiếu Nhập Kho</span
+                      >
+                    </a>
+                    <a
+                      class="MenuItemSidebar_menuItem__56b1m"
+                      href="./thongke.html"
+                    >
+                      <span class="MenuItemSidebar_title__LLBtx"
+                        >Thống Kê</span
+                      ></a
+                    >
+                  </div>
+                  <div
+                    style="padding-left: 16%; width: 100%; padding-right: 2rem"
+                  >
+                    <div class="wrapper">
+                      <div
+                        style="
+                          display: flex;
+                          padding-top: 1rem;
+                          align-items: center;
+                          gap: 1rem;
+                          padding-bottom: 1rem;
+                        "
+                      ></div>
+                      <div class="boxFeature">
+                        <div>
+                          <h2 style="font-size: 2.3rem">Sản phẩm</h2>
+                          <p style="font-size: 1.1rem; font-weight: 700">
+                            Sản Phẩm / Xem và chỉnh sửa
+                          </p>
+                        </div>
+                        <div>
+                          <button
+                            style="
+                              font-family: Arial;
+                              font-size: 1.5rem;
+                              font-weight: 700;
+                              border: 1px solid rgb(140, 140, 140);
+                              background-color: white;
+                              color: rgb(80, 80, 80);
+                              padding: 1rem 2rem 1rem 2rem;
+                              border-radius: 0.6rem;
+                              cursor: pointer;
+                            "
+                          >
+                            Hủy
+                          </button>
+                          <button
+                            style="
+                              margin-left: 1rem;
+                              font-family: Arial;
+                              font-size: 1.5rem;
+                              font-weight: 700;
+                              color: white;
+                              background-color: rgb(65, 64, 64);
+                              padding: 1rem 2rem 1rem 2rem;
+                              border-radius: 0.6rem;
+                              cursor: pointer;
+                            "
+                          >
+                            Lưu
+                          </button>
+                        </div>
+                      </div>
+                      <div class="boxTable">
+                        <h2>Thông Tin Sản Phẩm</h2>
+                        <div
+                          style="
+                            display: flex;
+                            padding: 0rem 1rem 0rem 1rem;
+                            justify-content: space-between;
+                          "
+                        >
+                          <div>
+                            <p style="font-weight: 700; font-size: 2rem">
+                              Chi tiết Sản Phẩm
+                            </p>
+                            <div style="padding-left: 1rem">
+                              <p class="text">Tên Sản Phẩm</p>
+                              <input
+                                class="input"
+                                style="width: 40rem"
+                                placeholder="Nhập Tên Sản Phẩm"
+                              />
+                              <span
+                                style="
+                                  margin-left: 1rem;
+                                  font-weight: 700;
+                                  color: rgb(150, 150, 150);
+                                "
+                                >*</span
+                              >
+                              <div style="display: flex; gap: 2rem">
+                                <div>
+                                  <p class="text">Nồng Độ Cồn</p>
+                                  <input
+                                    type="number"
+                                    class="input"
+                                    placeholder="Nồng Độ"
+                                  />
+                                </div>
+                                <div>
+                                  <p class="text">Dung Tích</p>
+                                  <input
+                                    class="input"
+                                    placeholder="Dung Tích"
+                                  />
+                                </div>
+                              </div>
+                              <div style="display: flex; gap: 2rem">
+                                <div>
+                                  <p class="text">Giá Tiền</p>
+                                  <input
+                                    type="number"
+                                    class="input"
+                                    placeholder="Giá Bán Sản Phẩm"
+                                  />
+                                </div>
+                                <div>
+                                  <p class="text">Xuất xứ</p>
+                                  <input
+                                    class="input"
+                                    style="width: 40rem"
+                                    placeholder="Xuất Xứ Nguồn Gốc Sản Phẩm"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <p
+                              style="
+                                font-weight: 700;
+                                color: rgb(100, 100, 100);
+                                line-height: 2;
+                                margin-top: 2rem;
+                              "
+                            >
+                              Lưu ý các sản phẩm được đưa vào doanh nghiệp phải
+                              đám bảo được các quy chuẩn như sau :<br />* Nguồn
+                              gốc xuất xứ rõ ràng *<br />* Sản phẩm từ nhà cung
+                              cấp được qua kiểm duyệt sàn lọc trước khi đưa vào
+                              doanh nghiệp *<br />* Đảm bảo chất lượng cao nhất
+                              cho từng sản phẩm *<br />* Nồng độ cồn không vượt
+                              quá 70%*
+                            </p>
+                          </div>
+                          <div>
+                            <p style="font-weight: 700; font-size: 2rem">
+                              Hình Ảnh Sản Phẩm
+                            </p>
+                            <div>
+                              <div class="image">
+                                <svg
+                                  aria-hidden="true"
+                                  focusable="false"
+                                  data-prefix="fas"
+                                  data-icon="camera"
+                                  class="svg-inline--fa fa-camera fa-w-16"
+                                  role="img"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 512 512"
+                                  style="
+                                    width: 5rem;
+                                    height: 5rem;
+                                    color: rgb(11, 140, 246);
+                                  "
+                                >
+                                  <path
+                                    fill="currentColor"
+                                    d="M360 96H152c-22.1 0-40 17.9-40 40v240c0 22.1 17.9 40 40 40h208c22.1 0 40-17.9 40-40V136c0-22.1-17.9-40-40-40zm-8 264c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16v-48c0-2.6 2.1-4.7 4.7-4.7h199.3c2.6 0 4.7 2.1 4.7 4.7v48zm0-96c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16v-48c0-2.6 2.1-4.7 4.7-4.7h199.3c2.6 0 4.7 2.1 4.7 4.7v48zm104 192H48c-22.1 0-40-17.9-40-40V160c0-22.1 17.9-40 40-40h48v-24c0-13.3 10.7-24 24-24h96c13.3 0 24 10.7 24 24v24h80v-24c0-13.3 10.7-24 24-24h96c13.3 0 24 10.7 24 24v24h48c22.1 0 40 17.9 40 40v240c0 22.1-17.9 40-40 40zM256 56c-22.1 0-40 17.9-40 40s17.9 40 40 40 40-17.9 40-40-17.9-40-40-40z"
+                                  ></path>
+                                </svg>
+                              </div>
+                              <input
+                                style="display: none"
+                                type="file"
+                                accept="image/*"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

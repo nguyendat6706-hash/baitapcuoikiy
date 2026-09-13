@@ -1,0 +1,49 @@
+.info-profile{
+    display: flex;
+    flex-direction: row;
+    margin: 2% 5%;
+    align-items: center;
+}
+.info-title{
+    margin: 5%;
+}
+.info-user{
+    width:200px
+}
+.info-input-value{
+    height: 30px;
+    width: 300px;
+}
+.info-submit-btn{
+    background-color: rgb(119, 13, 13);
+    width: 500px;
+    height: 30px;
+    border: 2px;
+    color:white;
+}
+#myInfo{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+#info-form{
+    margin-left: 10%;
+    height: 70%;
+    border: 1px solid #d5d5d5;
+    width: 80%;
+}
+
+#info-user-img{
+    width: 30px;
+    height: 30px;
+}
+.info-logo-title{
+    display: flex;
+    flex-direction: row;
+}
+#Info-form-logout{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}

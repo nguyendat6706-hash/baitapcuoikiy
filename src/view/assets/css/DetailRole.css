@@ -1,0 +1,76 @@
+table {
+    border-collapse: collapse;
+    border: none;
+    
+}
+.Phanquyen-feature{
+    width: 100%;
+}
+#nameQuyen{
+    width: 50%;
+    border:2px solid rgb(237, 237, 237);
+    padding:5px;
+    font-size: 18px;
+}
+.phanQuyen-head{
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#cap_nhat{
+    font-size: 16px;
+    color :rgb(250, 250, 250);
+    background-color: #4a4747;
+    border-radius: 15px;
+    border: 1px solid white;
+    padding: 10px ;
+    cursor: pointer;
+    
+}
+#huy{
+    font-size: 16px;
+    color :rgb(0, 0, 0);
+    background-color: #ffffff;
+    border-radius: 15px;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 10px 15px ;
+    cursor: pointer;
+}
+#huy:hover{
+    color :rgb(243, 243, 243);
+    background-color: #4a4747;
+    border-radius: 15px;
+    border: 1px solid rgb(0, 0, 0);
+}
+#cap_nhat:hover{
+    color :rgb(30, 28, 28);
+    background-color: rgb(250, 250, 250);
+    border: 1px solid #4a4747;
+}
+.Table-row-chan{
+    background-color: #e8e7e7;
+}
+th, td {
+
+    padding:5px;
+   
+}
+
+th {
+    background-color: #4a4747;
+    color:white;
+}
+
+.phanQuyen {
+    text-align: center;
+}
+
+.phanquyen-value {
+    text-align: center;
+    padding:10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.addNhomQuyen{
+    border:1px solid rgb(231, 231, 231);
+    width: 100%;
+    padding: 7px
+}

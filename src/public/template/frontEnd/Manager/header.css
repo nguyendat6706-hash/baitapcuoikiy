@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Caveat:wght@500;600&display=swap");
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  padding: 2rem 3rem;
+  background-color: #ffeecc;
+  user-select: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wrapperMenuAndContact {
+  display: flex;
+  align-items: center;
+  gap: 7rem;
+  cursor: pointer;
+}
+.contact {
+  cursor: default;
+  color: red;
+}
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.logoTori {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6rem;
+}
+.textLogoTori {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Bruno Ace", sans-serif;
+  font-family: "Caveat", cursive;
+  font-size: 4rem;
+  color: rgb(71, 17, 17);
+}
+.actions {
+  display: flex;
+  gap: 4rem;
+  cursor: pointer;
+  align-items: center;
+}
+.mainFooter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 5px solid #fff;
+  background-color: #333;
+  color: #fff;
+  padding: 12rem;
+}
+.socialNetwork {
+  display: flex;
+  gap: 2rem;
+}
+.circleIcon {
+  width: 5rem;
+  height: 5rem;
+  border: 2px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  border-radius: 50%;
+}
+
+.copyRight {
+  margin-top: 5rem;
+}

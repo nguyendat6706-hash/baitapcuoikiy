@@ -1,0 +1,83 @@
+table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+ 
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background-color:rgba(50, 49, 49, 0.918);
+    color: #fff;
+  }
+
+
+.Quyen-title{                                                                               
+    padding:20px;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 550;
+}
+.Quyen{
+    padding:20px;
+    border-radius: 20px;
+    background-color: rgb(7, 206, 7);
+    color: white;
+    font-weight: 1000;
+    cursor:pointer;
+}
+#Quyen-title-btn-add{
+    display: flex;
+    align-items: center;
+}
+#update-color{
+    background-color: rgb(23, 65, 203);
+    padding: 10px 20px;
+    border-radius:5px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    
+}
+
+.quyen-crud{
+    margin-left: auto;
+}
+/* #delete-color{
+    background-color: rgb(202, 64, 25);
+    padding: 10px 20px;
+    border-radius:5px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    
+} */
+.delete{
+    background-color: rgb(235, 44, 44);
+    color: white;
+    padding: 1rem 1.5rem ;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+.edit{
+    background-color: rgb(49, 147, 252);
+    color: white;
+    padding: 1rem 1.5rem ;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 10px;
+
+}
+
+#Find-Quyen{
+    border: 1px solid rgb(59, 58, 58);
+    width: 500px;
+    height: 30px;
+    border-radius: 5px;
+}

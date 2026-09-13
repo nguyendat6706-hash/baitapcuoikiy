@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+.StaffLayout_wrapper__CegPk {
+    background-color: rgb(255, 255, 255);
+    width: 100dvw;
+    height: 100dvh;
+    position: relative;
+}
+
+.StaffHeader_title__QxjW4 {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.StaffHeader_signOut__i2pcu {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.StaffHeader_wrapper__IQw-U {
+    z-index: 9;
+    background-color: rgb(50, 49, 49);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Manager_wrapper__vOYy {
+    /* nayf của manager */
+    /* padding-top: 6rem; */
+    /* này của admin */
+    padding-top: 8.2rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.wrapper h2{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.Sidebar_sideBar__CC4MK {
+    position: fixed;
+    height: 100dvh;
+    width: 15%;
+    background-color: rgba(50, 49, 49, 0.918);
+}
+
+.MenuItemSidebar_menuItem__56b1m.MenuItemSidebar_active__RPq {
+    background-color: #333;
+    color: #fff;
+}
+
+.MenuItemSidebar_menuItem__56b1m {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+}
+
+.boxFeature {
+    background-color: rgb(236, 233, 233);
+    height: 5rem;
+    border-radius: 0.3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+}
+
+.boxFeature input {
+  width: 20rem;
+  height: 35px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+
+.boxTable {
+    margin-top: 1rem;
+    background-color: rgb(236, 233, 233);
+    border-radius: 0.3rem;
+}
+
+.boxTable>table {
+    width: 100%;
+}
+
+.tableProduct p{
+  width: 190px;
+}
+
+/* Bootstrap Table Fix */
+.table {
+    --bs-table-color: initial !important;
+    --bs-table-bg: initial !important;
+}
+
+
+.boxTable thead {
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    height: 40px;
+    vertical-align: middle !important;
+    background-color: #4a4747 !important;
+}
+
+.boxTable tbody {
+  vertical-align: middle !important;
+  font-size: 15px;
+}
+
+.boxTable img {
+    height: 100px !important;
+}
+
+.edit{
+    width: 80px;
+    height: 40px;
+    font-size: 16px;
+}
+
+/* CSS cho liên kết "sửa" */
+.editProduct {
+    background-color: #3790f0;
+    transition: all 0.3s;
+    padding: 9px 15px;
+    color: white;
+    border-radius: 10px;
+}
+
+.editProduct:hover {
+    background-color: #0056b3;
+    /* Màu xanh dương nhạt khi hover */
+}
+
+.btn-lock {
+    background-color: #ff3535;
+    transition: all 0.3s;
+    padding: 9px 15px;
+    color: white;
+    border-radius: 10px;
+}
+
+.btn-lock:hover {
+    background-color: #ff0000;
+    /* Màu xanh dương nhạt khi hover */
+}
+
+.btn-open {
+    background-color: #73f154;
+    transition: all 0.3s;
+    padding: 9px 22px;
+    color: white;
+    border-radius: 10px;
+}
+
+.btn-open:hover {
+    background-color: #33ff00;
+    /* Màu xanh dương nhạt khi hover */
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+
+.pageButton {
+    background-color: whitesmoke;
+    color: #4a4747;
+    border: none;
+    border-radius: 50%;
+    width: 30px; /* Điều chỉnh kích thước nút phân trang tùy theo nhu cầu */
+    height: 30px; /* Điều chỉnh kích thước nút phân trang tùy theo nhu cầu */
+    margin: 0 5px; /* Khoảng cách giữa các nút phân trang */
+    cursor: pointer;
+}
+
+.pageButton.active {
+    background-color: #4a4747; /* Màu nút phân trang khi được chọn */
+    color: whitesmoke;
+}
+
+.Table_data_quyen_1, .Table_data_quyen_2{
+    text-align: center;
+}
+
+#tableBody{
+    height: 400px;
+}

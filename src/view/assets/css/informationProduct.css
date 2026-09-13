@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem !important;
+    line-height: 1.5;
+    text-rendering: optimizespeed;
+    overflow-y: overlay;
+}
+
+input,
+[tabindex] {
+    outline: none;
+    border: none;
+}
+
+a {
+    color: white;
+    text-decoration: none !important;
+}
+
+ul {
+    list-style: none;
+}
+
+.StaffLayout_wrapper__CegPk {
+    background-color: rgb(255, 255, 255);
+    width: 100dvw;
+    height: 100dvh;
+    position: relative;
+}
+
+.StaffHeader_title__QxjW4 {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.StaffHeader_signOut__i2pcu {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.StaffHeader_wrapper__IQw-U {
+    z-index: 9;
+    background-color: rgb(50, 49, 49);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Manager_wrapper__vOYy {
+    /* nayf của manager */
+    /* padding-top: 6rem; */
+    /* này của admin */
+    padding-top: 8.2rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.Sidebar_sideBar__CC4MK {
+    position: fixed;
+    height: 100dvh;
+    width: 15%;
+    background-color: rgba(50, 49, 49, 0.918);
+}
+
+.MenuItemSidebar_menuItem__56b1m.MenuItemSidebar_active__RPq {
+    background-color: #333;
+    color: #fff;
+}
+
+.MenuItemSidebar_menuItem__56b1m {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+}
+
+svg:not(:root).svg-inline--fa,
+svg:not(:host).svg-inline--fa {
+    overflow: visible;
+    box-sizing: content-box;
+}
+
+.wrapper h2 {
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.boxFeature {
+    background-color: rgb(236, 233, 233);
+    height: 5rem;
+    border-radius: 0.3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+}
+
+.paginationFilter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paginationFilter button{
+  border: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: black;
+  transition: all 0.5s;
+}
+
+.paginationFilter span {
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: black;
+  color: white;
+  line-height: 37px;
+}
+
+.paginationFilter i {
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  line-height: 35px;
+}
+
+.paginationFilter button:hover i{
+  color: black;
+}
+
+.paginationFilter button:hover{
+  background-color: white;
+}
+
+.input {
+    height: 3rem;
+    border: 1px solid rgb(156, 155, 155);
+    width: 50rem;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    border-radius: 2px;
+}
+
+.input:focus {
+    border: 1px solid black;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    transform: translatey(-50%);
+}
+
+.boxTable {
+    margin-top: 1rem;
+    background-color: rgb(236, 233, 233);
+    border-radius: 0.3rem;
+}
+
+.boxTable>table {
+    width: 100%;
+}
+
+.tableProduct p{
+    width: 190px;
+}
+
+/* Bootstrap Table Fix */
+.table {
+    --bs-table-color: initial !important;
+    --bs-table-bg: initial !important;
+}
+
+
+.boxTable thead {
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    height: 40px;
+    vertical-align: middle !important;
+    background-color: #4a4747 !important;
+}
+
+.boxTable tbody {
+    vertical-align: middle !important;
+}
+
+.boxTable img {
+    height: 100px !important;
+}
+
+/* CSS cho liên kết "sửa" */
+.editProduct {
+    background-color: #3790f0;
+    transition: all 0.3s;
+    padding: 9px 15px;
+    color: white;
+    border-radius: 10px;
+}
+
+.editProduct:hover {
+    background-color: #0056b3;
+    /* Màu xanh dương nhạt khi hover */
+}
+
+.btn-lock {
+    background-color: #ff3535;
+    transition: all 0.3s;
+    padding: 9px 15px;
+    color: white;
+    border-radius: 10px;
+}
+
+.btn-lock:hover {
+    background-color: #ff0000;
+    /* Màu xanh dương nhạt khi hover */
+}
+
+.btn-open {
+    background-color: #73f154;
+    transition: all 0.3s;
+    padding: 9px 22px;
+    color: white;
+    border-radius: 10px;
+}
+
+.btn-open:hover {
+    background-color: #33ff00;
+    /* Màu xanh dương nhạt khi hover */
+}

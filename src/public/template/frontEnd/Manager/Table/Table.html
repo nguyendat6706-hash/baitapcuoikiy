@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"  href=".\Table.css">
+</head>
+<style>
+    .table{
+        width: 100%;
+        border-spacing: 0;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+    }
+    .head{
+        background-color: rgb(56, 55, 55);
+    }
+    .th{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 14px;
+        font-weight: 800;
+        padding: 1rem ;
+        text-align: center;
+        color: white;
+    }
+    .td{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 1rem;
+        text-align: center;
+    }
+    .odd{
+        background-color: rgb(202, 199, 199);
+    }
+    .even{
+        background-color: white;
+    }
+    .delete{
+        background-color: rgb(235, 44, 44);
+        color: white;
+        padding: 1rem 1.5rem ;
+        font-weight: 700;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-right: 0.5rem;
+    }
+    .edit{
+        background-color: rgb(49, 147, 252);
+        color: white;
+        padding: 1rem 1.5rem ;
+        cursor: pointer;
+        font-weight: 700;
+        border-radius: 10px;
+    
+    }
+</style>
+<body>
+    <table class="table">
+        <thead class="head">
+            <tr>
+                <!-- {heads.map((head,index)=>{
+                    return (
+                        <th key={index} class="th}>{head}</th>
+                    )
+                })} -->
+                <!-- đoạn này dùng load js -->
+            </tr>
+        </thead>
+        <tbody class="body">
+            {
+                <!-- bodys?.length !== 0 ?
+                bodys?.map((body,index)=>{
+                    if(index%2===0){
+                        return ( -->
+                            <tr key={index} class="even">
+                                <td class="td" key={index+"maTK"}>{body.maTK}</td>
+                                <td class="td" key={index+"hoTen"}>{body.hoTen}</td>
+                                <td class="td" key={index+"birth"}>{body.ngaySinh}</td>
+                                <td class="td" key={index+"diaChi"}>{body.diaChi}</td>
+                                <td class="td" key={index+"gioiTinh"}>{body.gioiTinh}</td>
+                                <td class="td" key={index+"email"}>{body.email}</td>
+                                <td class="td" key={index+"soDienThoai"}>{body.soDienThoai}</td>
+                                <td class="td" key={index+"vaiTro"}>{body.vaiTro}</td>
+                                <td class="td">
+                                    <button class="delete">Xóa</button>
+                                    <button class="edit">Sửa</button>
+                                </td>
+                            </tr>
+                        
+                    <!-- }else{
+                        return (
+                            <tr key={index} class="odd}>
+                                <td class="td} key={index+"maTK"}>{body.maTK}</td>
+                                <td class="td} key={index+"hoTen"}>{body.hoTen}</td>
+                                <td class="td} key={index+"birth"}>{body.ngaySinh}</td>
+                                <td class="td} key={index+"diaChi"}>{body.diaChi}</td>
+                                <td class="td} key={index+"gioiTinh"}>{body.gioiTinh}</td>
+                                <td class="td} key={index+"email"}>{body.email}</td>
+                                <td class="td} key={index+"soDienThoai"}>{body.soDienThoai}</td>
+                                <td class="td} key={index+"vaiTro"}>{body.vaiTro}</td>
+                                <td class="td}>
+                                    <button class="delete} onClick={()=>deleteUser(body.maTK)}>Xóa</button>
+                                    <button class="edit} onClick={()=>{
+                                        setId(body.maTK);
+                                        setAddress(body.diaChi)
+                                        setDate(body.ngaySinh)
+                                        setName(body.hoTen)
+                                        setGender(body.gioiTinh)
+                                        setEmail(body.email)
+                                        setPhone(body.soDienThoai)
+                                        setChooseRole(body.vaiTro)
+                                        setShowModal(true)
+                                        }}>Sửa</button>
+                                </td>
+                            </tr>
+                        ) -->
+                    <!-- } -->
+                <!-- }) -->
+                <!-- : -->
+                <tr>
+                    <td colSpan="9" style="text-align:center;font-weight:700;padding:1rem">
+                        Không tìm thấy bất kì tài khoản nào 
+                    </td>
+                </tr>
+            <!-- } -->
+        </tbody>
+    </table>
+</body>
+</html>
