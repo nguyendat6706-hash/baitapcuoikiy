@@ -8,6 +8,7 @@ if (!isset($_SESSION['chucNang'])) {
 }
 
 function loadPageDependOnFeature() {
+  $htmlContent = '';
   $feature = array_map('intval', $_SESSION['chucNang']);
   for ($i = 0; $i < count($feature); $i++) {
     if ($feature[$i] === 2) {
@@ -176,6 +177,11 @@ function loadPageDependOnFeature() {
                             ?>
                           </select>
 
+                          <div style="margin-top: 1.5rem;">
+                            <p class="text">Mô Tả Sản Phẩm</p>
+                            <textarea name="MoTa" id="MoTa"></textarea>
+                          </div>
+
                         </div>
                         <div>
                           <div>
@@ -190,26 +196,9 @@ function loadPageDependOnFeature() {
                               Hình Ảnh Sản Phẩm
                             </p>
                             <div>
-                              <!-- input file thật, thuộc tính "multiple" cho phép chọn nhiều ảnh cùng lúc -->
-                              <input type="file" id="anhSanPhamInputMulti" accept="image/*" multiple style="display: none;">
-                              <button type="button" onclick="document.getElementById('anhSanPhamInputMulti').click();">
-                                Upload ảnh (chọn được nhiều ảnh)
-                              </button>
-                              <button type="button" id="removeImageMulti">Gỡ toàn bộ ảnh</button>
-                              <div id="imageContainerMulti" style="
-                                display: flex;
-                                flex-wrap: wrap;
-                                align-items: flex-start;
-                                gap: 8px;
-                                width: 100%;
-                                max-width: 500px;
-                                min-height: 140px;
-                                height: auto;
-                                padding: 10px;
-                                margin-top: 10px;
-                                border: 2px dotted rgb(11, 140, 246);
-                                box-sizing: border-box;
-                              ">
+                              <button type="button" id="uploadButton">Upload ảnh</button>
+                              <button type="button" id="removeImage">Gỡ hình ảnh</button>
+                              <div class="image" id="imageContainer">
                               </div>
                             </div>
                           </div>
@@ -243,5 +232,10 @@ function loadPageDependOnFeature() {
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/UTH-PHP/src/view/assets/js/managerProduct/script.js"></script>
+
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+<script>
+  CKEDITOR.replace('MoTa');
+</script>
 
 </html>
