@@ -215,7 +215,7 @@ class ProductModel {
     }
   }
 
-  public function createProduct($tenSP, $theTich, $gia, $nongDoCon, $xuatXu, $thuongHieu, $anhMinhHoa, $maLoaiSanPham) {
+  public function createProduct($tenSP, $theTich, $gia, $nongDoCon, $xuatXu, $thuongHieu, $anhMinhHoa, $maLoaiSanPham, $moTa) {
     if (!isset($tenSP) || !isset($theTich) || !isset($gia) || !isset($nongDoCon) || !isset($xuatXu) || !isset($thuongHieu) || !isset($anhMinhHoa) || !isset($maLoaiSanPham)) {
       return (object) [
         "status" => 400,
@@ -227,7 +227,7 @@ class ProductModel {
     $this->db = MysqlConfig::getConnection();
     try {
       // Chuẩn bị câu lệnh SQL với tham số
-      $statement = $this->db->prepare("INSERT INTO SanPham (TenSanPham, XuatXu, ThuongHieu, TheTich, NongDoCon, Gia, SoLuongConLai, AnhMinhHoa, TrangThai, MaLoaiSanPham) VALUES (:tenSP, :xuatXu, :thuongHieu, :theTich, :nongDoCon, :gia, 1, :anhMinhHoa, 1, :maLoaiSanPham)");
+      $statement = $this->db->prepare("INSERT INTO SanPham (TenSanPham, XuatXu, ThuongHieu, TheTich, NongDoCon, Gia, SoLuongConLai, AnhMinhHoa, TrangThai, MaLoaiSanPham, MoTa) VALUES (:tenSP, :xuatXu, :thuongHieu, :theTich, :nongDoCon, :gia, 1, :anhMinhHoa, 1, :maLoaiSanPham, :moTa)");
 
       // Bind các giá trị vào câu lệnh prepare với kiểu dữ liệu tương ứng
       $statement->bindParam(':tenSP', $tenSP, PDO::PARAM_STR);
@@ -238,6 +238,7 @@ class ProductModel {
       $statement->bindParam(':gia', $gia, PDO::PARAM_INT);
       $statement->bindParam(':anhMinhHoa', $anhMinhHoa, PDO::PARAM_STR);
       $statement->bindParam(':maLoaiSanPham', $maLoaiSanPham, PDO::PARAM_INT);
+      $statement->bindParam(':moTa', $moTa, PDO::PARAM_STR);
 
       // Thực thi câu lệnh
       $statement->execute();
@@ -245,9 +246,6 @@ class ProductModel {
       return (object) [
         "status" => 200,
         "message" => "Thêm Sản Phẩm Thành công",
-        "data" => [
-          "MaSanPham" => $this->db->lastInsertId(), // Lấy mã sản phẩm vừa tạo để gắn ảnh vào
-        ],
       ];
     } catch (PDOException $e) {
       return (object) [
@@ -261,7 +259,7 @@ class ProductModel {
   }
 
 
-  public function updateProduct($maSP, $tenSP, $theTich, $gia, $nongDoCon, $xuatXu, $thuongHieu, $anhMinhHoa, $maLoaiSanPham) {
+  public function updateProduct($maSP, $tenSP, $theTich, $gia, $nongDoCon, $xuatXu, $thuongHieu, $anhMinhHoa, $maLoaiSanPham, $moTa) {
     if (!isset($tenSP)) {
       return (object) [
         "status" => 400,
@@ -311,7 +309,7 @@ class ProductModel {
       // Khởi tạo kết nối đến cơ sở dữ liệu
       $this->db = MysqlConfig::getConnection();
       try {
-        $statement = $this->db->prepare("UPDATE SanPham SET TenSanPham = ?, XuatXu = ?, ThuongHieu = ?, TheTich = ?, NongDoCon = ?, Gia = ?, AnhMinhHoa = ?, MaLoaiSanPham = ? WHERE MaSanPham = ?");
+        $statement = $this->db->prepare("UPDATE SanPham SET TenSanPham = ?, XuatXu = ?, ThuongHieu = ?, TheTich = ?, NongDoCon = ?, Gia = ?, AnhMinhHoa = ?, MaLoaiSanPham = ?, MoTa = ? WHERE MaSanPham = ?");
         $statement->bindParam(1, $tenSP);
         $statement->bindParam(2, $xuatXu);
         $statement->bindParam(3, $thuongHieu);
@@ -320,7 +318,8 @@ class ProductModel {
         $statement->bindParam(6, $gia);
         $statement->bindParam(7, $anhMinhHoa);
         $statement->bindParam(8, $maLoaiSanPham);
-        $statement->bindParam(9, $maSP);
+        $statement->bindParam(9, $moTa);
+        $statement->bindParam(10, $maSP);
         $statement->execute();
         // $totalPages = null;
         return (object) [
