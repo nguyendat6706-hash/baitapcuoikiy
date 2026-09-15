@@ -196,9 +196,9 @@ function loadPageDependOnFeature() {
                               Hình Ảnh Sản Phẩm
                             </p>
                             <div>
-                              <button type="button" id="uploadButton">Upload ảnh</button>
-                              <button type="button" id="removeImage">Gỡ hình ảnh</button>
-                              <div class="image" id="imageContainer">
+                              <input type="file" id="anhSanPhamInputMulti" multiple accept="image/*" style="margin-bottom: 10px;">
+                              <button type="button" id="removeImageMulti">Gỡ toàn bộ ảnh</button>
+                              <div class="image" id="imageContainerMulti" style="margin-top: 10px; display: flex; flex-wrap: wrap;">
                               </div>
                             </div>
                           </div>
