@@ -1,18 +1,17 @@
 let absolutePath;
 let totalPages = 2;
 let danhSachAnhAll = []; // Mảng chứa các ảnh (base64) đã chọn — dùng riêng cho form Tạo sản phẩm nhiều ảnh
+
 $(document).ready(() => {
   // Function to handle setStatus button click
   $('.tableProduct').delegate(".setStatus", "click", (event) => {
     const maSanPham = $(event.currentTarget).attr('data-masanpham');
-
     // Show modal confirmation dialog
     showIntervention(() => {
       // Tạo đối tượng formData chứa dữ liệu cần gửi đi
       const formData = new FormData();
       formData.append('action', 'status');
       formData.append('MaSanPham', maSanPham);
-
       // Gửi request AJAX bằng axios
       $.ajax({
         url: '/UTH-PHP/src/controller/ProductController/ProductController.php',
@@ -49,7 +48,6 @@ $(document).ready(() => {
   $('.tableProduct').delegate(".editProduct", "click", (event) => {
     // Lấy mã sản phẩm từ thuộc tính data-maSanPham của nút
     const maSanPham = $(event.currentTarget).attr('data-masanpham');
-
     // Chuyển hướng trang đến trang chỉnh sửa sản phẩm và truyền tham số maSanPham
     window.location.href = `/UTH-PHP/src/controller/ProductController/EditProductController.php?maSanPham=${maSanPham}`;
   });
@@ -58,7 +56,6 @@ $(document).ready(() => {
     // Chuyển hướng trang đến trang chỉnh sửa sản phẩm và truyền tham số maSanPham
     window.location.href = `/UTH-PHP/src/controller/ProductController/CreateProductController.php`;
   });
-
 
   // create
   $(".createProduct").on("submit", (event) => {
@@ -83,9 +80,12 @@ $(document).ready(() => {
     $(".createProduct input").each(function() {
       formData.append($(this).attr('name'), $(this).val());
     });
-    
+
     // Lấy giá trị từ select và thêm vào FormData
     formData.append('loaiSanPham', $('#loaiSanPham').val());
+
+    // Lấy nội dung mô tả từ CKEditor (không dùng $('#MoTa').val() vì CKEditor ẩn textarea gốc)
+    formData.append('MoTa', CKEDITOR.instances.MoTa.getData());
 
     $.ajax({
       url: "/UTH-PHP/src/controller/ProductController/CreateProductController.php", // URL đích
@@ -107,7 +107,6 @@ $(document).ready(() => {
         console.error("Đã xảy ra lỗi:", error);
       }
     });
-
   });
 
   // Filter
@@ -125,20 +124,17 @@ $(document).ready(() => {
   $('.paginationFilter button').on('click', (event) => {
     // Get the class of the clicked button
     const buttonClass = $(event.currentTarget).hasClass('prev') ? 'prev' : $(event.currentTarget).hasClass('next') ? 'next' : '';
+
     // Check if the clicked button is for previous or next page
     if (buttonClass === 'prev') {
       // Get the current page number
       let currentPage = parseInt($('.valuePage').text());
-
       // If the current page is already the first page, don't update the page
       if (currentPage === 1) return;
-
       // Calculate the new page number by subtracting 1
       const newPage = currentPage - 1;
-
       // Update the UI with the new page number
       $('.valuePage').text(newPage);
-
       activeFilters.pagination = newPage;
     } else if (buttonClass === 'next') {
       console.log("click")
@@ -146,18 +142,15 @@ $(document).ready(() => {
       let currentPage = parseInt($('.valuePage').text());
       // If the current page is already the last page, don't update the page
       if (currentPage === totalPages) return;
-
       // Calculate the new page number by adding 1
       const newPage = currentPage + 1;
       // Update the UI with the new page number
       $('.valuePage').text(newPage);
       activeFilters.pagination = newPage;
     }
-
     getValue();
     postRequestFilterByAjax();
   });
-
 
   // btn__cancel
   $('.btn__cancel').click((event) => {
@@ -178,14 +171,21 @@ $(document).ready(() => {
         console.log(img);
         formData.append('AnhMinhHoa', img)
       }
+
       $(".updateProduct input").each(function() {
         formData.append($(this).attr('name'), $(this).val());
       });
+
       formData.append('loaiSanPham', $('#loaiSanPham').val());
+
+      // Lấy nội dung mô tả từ CKEditor (không dùng $('#MoTa').val() vì CKEditor ẩn textarea gốc)
+      formData.append('MoTa', CKEDITOR.instances.MoTa.getData());
+
       const urlParams = new URLSearchParams(window.location.search);
       const maSanPham = urlParams.get('maSanPham');
       formData.append('maSanPham', maSanPham);
       formData.append('action', 'updateProduct');
+
       // Thực hiện AJAX request
       $.ajax({
         url: "/UTH-PHP/src/controller/ProductController/EditProductController.php",
@@ -235,7 +235,6 @@ $(document).ready(() => {
           let style = document.createElement('style');
           style.innerHTML = '#imageContainer img { width: 200px; height: 200px; object-fit: cover; }';
           document.head.appendChild(style);
-
         });
 
         // Đọc dữ liệu của file ảnh
@@ -245,7 +244,6 @@ $(document).ready(() => {
 
     // Kích hoạt sự kiện click cho input[type="file"]
     input.click();
-
   });
 
   $('#removeImage').click(() => {
@@ -313,7 +311,6 @@ $(document).ready(() => {
     resetSortIcons()
     const sortUpIcon = 'Giá tiền <i class="fa-solid fa-caret-up"></i>';
     const sortDownIcon = 'Giá tiền <i class="fa-solid fa-caret-down"></i>';
-
     if (activeFilters.sort === "" || activeFilters.sort === "price_desc") {
       activeFilters.sort = "price_asc";
       $('#sortPrice').html(sortUpIcon);
@@ -321,11 +318,8 @@ $(document).ready(() => {
       activeFilters.sort = "price_desc";
       $('#sortPrice').html(sortDownIcon);
     }
-
     postRequestFilterByAjax();
   });
-
-
 
   $('#sortNameAsc').click(() => {
     resetSortIcons()
@@ -338,7 +332,6 @@ $(document).ready(() => {
       activeFilters.sort = "name_desc";
       $('#sortNameAsc').html(sortDownIcon);
     }
-
     postRequestFilterByAjax();
   });
 
@@ -366,7 +359,6 @@ $(document).ready(() => {
     } else {
       activeFilters.sort = "nongDo_desc";
       $('#sortNongDo').html(sortDownIcon);
-
     }
     postRequestFilterByAjax();
   });
@@ -414,8 +406,6 @@ $(document).ready(() => {
   });
 });
 
-
-
 // Select the button and add a click event listener
 document.querySelector('.StaffHeader_signOut__i2pcu').addEventListener('click', () => {
   // Redirect to the desired page
@@ -435,13 +425,11 @@ const getValue = () => {
   const alcoholContentFilter = $(".filter__nongDoCon").val();
   const priceFilter = $(".filter__price").val();
   const volumeFilter = $(".filter__theTich").val();
-
   activeFilters.alcoholContent = alcoholContentFilter === "default" ? "" : $(".filter__nongDoCon").val();
   activeFilters.volume = volumeFilter === "default" ? "" : $(".filter__theTich").val();
   activeFilters.price = priceFilter === "default" ? "" : $(".filter__price").val();
   activeFilters.search = $("#searchInput").val().trim();
 };
-
 
 const postRequestFilterByAjax = () => {
   const formData = new FormData();
@@ -456,7 +444,6 @@ const postRequestFilterByAjax = () => {
     theTich: getValueTheTich(activeFilters.volume),
     sort: activeFilters.sort
   });
-
   $.ajax({
     url: "/UTH-PHP/src/controller/ProductController/ProductController.php",
     method: "POST",
@@ -470,7 +457,6 @@ const postRequestFilterByAjax = () => {
       } else {
         document.querySelector(".paginationFilter").style.display = "flex";
       }
-
       if (response.products !== "<p>Không có sản phẩm phù hợp.</p>") {
         document.querySelector(".tableProduct").innerHTML = response.products;
         document.querySelector(".textMessage").innerHTML = "";
@@ -648,6 +634,3 @@ const resetSortIcons = () => {
   $('#sortSoLuongConLai').html('Số Lượng ' + defaultIcon);
   $('#sortTrangThai').html('Trạng thái ' + defaultIcon);
 }
-
-
-
