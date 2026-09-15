@@ -73,7 +73,7 @@ function loadPageDependOnFeature() {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   <meta charset="UTF-8" />
@@ -82,7 +82,9 @@ function loadPageDependOnFeature() {
   <link rel="stylesheet" href="../../public/template/frontEnd/Manager/productAdJust.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <title>Document</title>
-</head>
+<link rel="stylesheet" href="/UTH-PHP/src/view/assets/css/admin-responsive.css?v=20260914">
+  <script src="/UTH-PHP/src/view/assets/js/admin-responsive.js?v=20260914" defer></script>
+  </head>
 
 <body>
   <div id="root">
