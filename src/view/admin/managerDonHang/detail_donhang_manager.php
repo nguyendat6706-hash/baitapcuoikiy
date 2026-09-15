@@ -78,7 +78,7 @@ function loadPageDependOnFeature() {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   <meta charset="UTF-8" />
@@ -89,7 +89,9 @@ function loadPageDependOnFeature() {
   <link rel="stylesheet" href="/UTH-PHP/src/view/detail_donhang/detail_donhang.css" />
   <link rel="stylesheet" href="/UTH-PHP/src/view/admin/managerDonHang/qldonhang.css" />
   <title>Document</title>
-</head>
+<link rel="stylesheet" href="/UTH-PHP/src/view/assets/css/admin-responsive.css?v=20260914">
+  <script src="/UTH-PHP/src/view/assets/js/admin-responsive.js?v=20260914" defer></script>
+  </head>
 
 <body>
   <div>
