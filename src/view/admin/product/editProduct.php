@@ -6,6 +6,7 @@ if (!isset($_SESSION['chucNang'])) {
   header("Location: http://localhost/UTH-PHP/src/controller/HomeController/HomeController.php");
   exit; // Đảm bảo dừng kịp thời việc thực thi của script
 }
+
 function loadPageDependOnFeature() {
   $feature = array_map('intval', $_SESSION['chucNang']);
   $htmlContent = "";
@@ -154,7 +155,6 @@ function loadPageDependOnFeature() {
                             <p class="text">Dung Tích</p>
                             <input type="number" class="input" placeholder="Dung Tích" name="TheTich" value="<?php echo isset($dataProduct['TheTich']) ? $dataProduct['TheTich'] : ''; ?>" required />
                           </div>
-
                           <div>
                             <p class="text">Giá Tiền</p>
                             <input type="number" class="input" placeholder="Giá Bán Sản Phẩm" name="Gia" value="<?php echo isset($dataProduct['Gia']) ? $dataProduct['Gia'] : ''; ?>" required />
@@ -180,6 +180,10 @@ function loadPageDependOnFeature() {
                             ?>
                           </select>
 
+                          <div style="margin-top: 1.5rem;">
+                            <p class="text">Mô Tả Sản Phẩm</p>
+                            <textarea name="MoTa" id="MoTa"><?php echo isset($dataProduct['MoTa']) ? $dataProduct['MoTa'] : ''; ?></textarea>
+                          </div>
 
                         </div>
                         <div>
@@ -231,5 +235,10 @@ function loadPageDependOnFeature() {
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/UTH-PHP/src/view/assets/js/managerProduct/script.js"></script>
+
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+<script>
+  CKEDITOR.replace('MoTa');
+</script>
 
 </html>
