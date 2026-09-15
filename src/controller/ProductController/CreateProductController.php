@@ -1,7 +1,6 @@
 <?php
 $projectRoot = $_SERVER['DOCUMENT_ROOT'] . '/UTH-PHP';
 require_once "$projectRoot/src/model/ProductModels/SanPhamModel.php";
-
 class CreateProductController {
   public function display() {
     global $projectRoot;
@@ -10,10 +9,8 @@ class CreateProductController {
     $dataGetLoaiSanPham = $modelLoaiSanPham->getAllTypeProduct(null, null)->data;
     require_once "$projectRoot/src/view/admin/product/createProduct.php";
   }
-
   public function createProduct() {
     $modelProduct = new ProductModel();
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (
         isset($_POST['TenSanPham']) && !empty($_POST['TenSanPham']) &&
@@ -26,7 +23,7 @@ class CreateProductController {
           exit();
         }
 
-        // ==== MỚI: nhận mảng nhiều ảnh thay vì 1 ảnh đơn ====
+        // ==== Nhận mảng nhiều ảnh thay vì 1 ảnh đơn (Đạt) ====
         $mangAnh = isset($_POST['anhSanPham']) ? $_POST['anhSanPham'] : [];
         if (!is_array($mangAnh) || count($mangAnh) === 0) {
           echo json_encode(array('status' => 400, 'message' => 'Vui lòng chọn ít nhất 1 ảnh cho sản phẩm'));
@@ -41,16 +38,18 @@ class CreateProductController {
         $thuongHieu = $_POST['ThuongHieu'];
         $maLoaiSanPham = $_POST['loaiSanPham'];
 
+        // ==== Mô tả sản phẩm lấy từ CKEditor (Quang Huy) ====
+        $moTa = isset($_POST['MoTa']) ? $_POST['MoTa'] : '';
+
         // Ảnh đầu tiên trong mảng dùng làm ảnh đại diện (AnhMinhHoa)
         // để các trang danh sách/sản phẩm cũ vẫn hiển thị đúng, không cần sửa gì thêm
         $anhDaiDien = $mangAnh[0];
 
-        $result = $modelProduct->createProduct($tenSP, $theTich, $gia, $nongDoCon, $xuatXu, $thuongHieu, $anhDaiDien, $maLoaiSanPham);
+        $result = $modelProduct->createProduct($tenSP, $theTich, $gia, $nongDoCon, $xuatXu, $thuongHieu, $anhDaiDien, $maLoaiSanPham, $moTa);
 
         if ($result->status == 200) {
           // Lấy Mã Sản Phẩm vừa tạo để gắn toàn bộ ảnh vào bảng AnhSanPham
           $maSanPhamMoi = $result->data['MaSanPham'];
-
           global $projectRoot;
           require_once "$projectRoot/src/model/ProductModels/AnhSanPhamModel.php";
           $modelAnh = new AnhSanPhamModel();
@@ -70,7 +69,6 @@ class CreateProductController {
       }
     }
   }
-
   public function show() {
     if ($_POST['action'] === 'createProduct') {
       $this->createProduct();
@@ -79,6 +77,5 @@ class CreateProductController {
     }
   }
 }
-
 $createProductController = new CreateProductController();
 $createProductController->show();
