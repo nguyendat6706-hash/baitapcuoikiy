@@ -74,7 +74,7 @@ function loadPageDependOnFeature() {
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   <meta charset="UTF-8" />
@@ -90,6 +90,8 @@ function loadPageDependOnFeature() {
       text-decoration: none;
     }
   </style>
+<link rel="stylesheet" href="/UTH-PHP/src/view/assets/css/admin-responsive.css?v=20260914">
+  <script src="/UTH-PHP/src/view/assets/js/admin-responsive.js?v=20260914" defer></script>
 </head>
 
 <body>
