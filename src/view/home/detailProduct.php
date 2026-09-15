@@ -7,17 +7,16 @@
   <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="stylesheet" href="/UTH-PHP/src/view/assets/css/detailProduct.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/UTH-PHP/src/view/assets/css/homepage.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head> 
+</head>
 
 <body>
-<?php require "../../view/include/header.php"; ?>
-
+  <?php require "../../view/include/header.php"; ?>
   <!-- daiiiiiii -->
   <section style="margin-top: 140px;">
     <div class=" center-text">
@@ -27,8 +26,6 @@
       </div>
     </div>
   </section>
-
-
   <section>
     <div class="product-detail-wrapper">
       <div class="product__wrapper containerPage">
@@ -39,13 +36,10 @@
           <div class="slider__wrapper">
             <div class="image__list_new">
               <div class="image_product_new view_more_image ">
-
               </div>
               <img class="active_image image_product_new" src="<?php echo $dataProduct['AnhMinhHoa'] ?>" alt="thumbnail">
             </div>
-
           </div>
-
         </div>
         <div class="info__wrapper">
           <div class="title__wrapper">
@@ -80,16 +74,13 @@
               <span class="content content-so-luong-con-lai"><?php echo $dataProduct['SoLuongConLai'] ?></span>
             </div>
             <div>
-
             </div>
             <div class="size__wrapper">
               <p class="title">Dung tích</p>
               <div class="size__list">
-
                 <div class="size__item ">
                   <p><?php echo $dataProduct['TheTich']; ?></p>
                 </div>
-
               </div>
             </div>
             <div class="quantity__wrapper">
@@ -107,9 +98,20 @@
               </button>
             </div>
           </div>
-
         </div>
+
       </div>
+
+      <?php if (!empty($dataProduct['MoTa'])) : ?>
+        <div class="product_description__wrapper containerPage" style="margin-top: 3rem; padding: 2rem; background: #fff; border-radius: 0.6rem;">
+          <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">Mô Tả Sản Phẩm</h3>
+          <div class="product_description__content">
+            <?php echo $dataProduct['MoTa']; ?>
+          </div>
+        </div>
+      <?php endif; ?>
+
+    </div>
   </section>
   <?php require "../../view/include/footer.php"; ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -160,7 +162,6 @@
             showSuccessMessage('Thêm vào giỏ hàng thành công!')
           }
           console.log(productId)
-
           if (responseJSON.status == 401) {
             Swal.fire({
               icon: 'error',
@@ -172,7 +173,6 @@
             })
             return;
           }
-
           if (responseJSON.status == 402) {
             Swal.fire({
               icon: 'error',
@@ -184,7 +184,6 @@
             })
             return;
           }
-
           $('#message').text(response);
           try {
             if (cartCount > 0) {
@@ -232,7 +231,6 @@
         quantityInput.val(1);
         return;
       }
-
       if (currentValue > 1) {
         quantityInput.val(currentValue - 1);
       } else {
@@ -244,7 +242,6 @@
         });
       }
     });
-
 
     function showSuccessMessage(message) {
       Swal.fire({
@@ -259,13 +256,10 @@
     // Chọn trường input
     let quantityInput = document.querySelector('.quantity-input');
     quantityInput.addEventListener('input', function() {
-
       let value = this.value;
       if (isNaN(value) || parseFloat(value) <= 0) {
-
         this.value = 1;
       }
-
       if (parseInt(value) > parseInt($('.content-so-luong-con-lai').text())) {
         this.value = parseInt($('.content-so-luong-con-lai').text());
       }
