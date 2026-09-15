@@ -81,7 +81,7 @@ function loadPageDependOnFeature() {
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   <meta charset="UTF-8" />
@@ -91,7 +91,9 @@ function loadPageDependOnFeature() {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-j6ud1PvOBhgFjlY0W46HwjOeZl3Ni6N4+BCzpu8K3RCDZs/T4pbFpoZYy4CkeiN1" crossorigin="anonymous">
   <link rel="stylesheet" href="/UTH-PHP/src/view/assets/css/informationProduct.css">
   <title>Document</title>
-</head>
+<link rel="stylesheet" href="/UTH-PHP/src/view/assets/css/admin-responsive.css?v=20260914">
+  <script src="/UTH-PHP/src/view/assets/js/admin-responsive.js?v=20260914" defer></script>
+  </head>
 
 <body>
   <div id="root">
