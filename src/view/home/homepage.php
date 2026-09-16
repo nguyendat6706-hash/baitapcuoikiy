@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <script src="js/bootstrap.js"></script>
   <link rel="stylesheet" href="../../public/template/frontEnd/home/login.css" />
   <link rel="stylesheet" href="/UTH-PHP/src/view/assets/css/homepage.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -132,9 +131,7 @@
         <h2 class="center-text-share">SẢN PHẨM NỔI BẬT</h2>
       </div>
     </div>
-    <div class="icon-bottom-title">
-      <img src="../../../img/design/line.webp" alt="" />
-    </div>
+    <div class="icon-bottom-title"></div>
   </section>
   <div class="searchName">
     <!-- Button trigger modal -->
