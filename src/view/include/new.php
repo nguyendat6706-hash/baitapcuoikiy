@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="Home-grid-item">
-        <img class="Home-gird-item-img" src="../../public/img/cover-gia-ruou-ballantine.jpg" alt="" />
+        <img class="Home-gird-item-img" src="../../public/img/imgProduct/cover-gia-ruou-ballantine.jpg" alt="" />
         <div class="home-title-context">
             <h1 class="Home-title-heading">
                 Giá rượu Ballantine's Finest, 12, 15, 17, 19, 21, 30, 40 mới nhất
