@@ -70,7 +70,7 @@ class CreateProductController {
     }
   }
   public function show() {
-    if ($_POST['action'] === 'createProduct') {
+    if (isset($_POST['action']) && $_POST['action'] === 'createProduct') {
       $this->createProduct();
     } else {
       $this->display();
