@@ -376,3 +376,194 @@ label {
   font-weight: bold;
   transition: background-color 0.3s;
 }
+
+
+/* =========================================================
+   RESPONSIVE - CART / GIỎ HÀNG
+   Chỉ thay đổi tablet + mobile. Desktop giữ nguyên.
+   Bố cục: Sản phẩm ở trên -> Thông tin đơn hàng ở dưới.
+   ========================================================= */
+@media (max-width: 1024px) {
+  html, body { max-width: 100%; overflow-x: hidden; }
+
+  .containerPage {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .page_cart {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .wrapListCart {
+    width: 100%;
+    padding: 24px 0 0;
+  }
+
+  .wrapListCart .quantityCart {
+    margin-top: 0;
+  }
+
+  .wrapListCart .listCart {
+    width: 100%;
+    margin-top: 22px;
+  }
+
+  .cartItem {
+    width: 100%;
+    min-width: 0;
+    margin-right: 0;
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr);
+    column-gap: 22px;
+    row-gap: 12px;
+    padding: 24px 0;
+  }
+
+  .cartItem .img,
+  .cartItem > .img {
+    width: 100px;
+    height: 120px;
+    min-width: 0;
+  }
+
+  .cartItem > .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .cartItem .inforCart {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cartItem .inforCart .nameAndPrice { min-width: 0; }
+  .nameCart {
+    display: block;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  .priceCart { font-size: 15px; margin-top: 6px; }
+
+  .cartItem .inforCart .quantity {
+    width: max-content;
+    height: auto;
+    gap: 5px;
+  }
+
+  .cartItem .inforCart .quantity .btnQuantity,
+  .txtQuantity {
+    width: 34px;
+    height: 34px;
+  }
+
+  .cartItem .wrapTotalPriceOfCart {
+    grid-column: 2;
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-top: 0;
+  }
+
+  .cartItem .wrapTotalPriceOfCart .totalPriceOfCart {
+    align-items: flex-start;
+  }
+
+  .valueTotalPrice { font-size: 18px; }
+  .cartItem .btnRemove { width: 38px; height: 38px; }
+
+  .wrapInfoOrder {
+    width: 100%;
+    height: auto;
+    padding: 0 0 36px;
+  }
+
+  .wrapInfoOrder .bg_infoOrder {
+    height: 100%;
+    border-radius: 8px;
+  }
+
+  .wrapInfoOrder .infoOrder {
+    position: relative;
+    top: auto;
+    width: 100%;
+    margin: 0;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .containerPage { padding-left: 14px; padding-right: 14px; }
+
+  .page_cart { gap: 20px; }
+  .wrapListCart { padding-top: 18px; }
+  .wrapListCart .quantityCart { font-size: 14px; }
+  .wrapListCart .listCart { margin-top: 14px; }
+
+  .cartItem {
+    grid-template-columns: 72px minmax(0, 1fr);
+    column-gap: 12px;
+    row-gap: 10px;
+    padding: 18px 0;
+  }
+
+  .cartItem .img,
+  .cartItem > .img {
+    width: 72px;
+    height: 92px;
+  }
+
+  .cartItem .inforCart { gap: 8px; }
+  .nameCart { font-size: 15px; line-height: 1.4; }
+  .priceCart { font-size: 14px; margin-top: 4px; }
+
+  .cartItem .inforCart .quantity { gap: 4px; }
+  .cartItem .inforCart .quantity .btnQuantity,
+  .txtQuantity { width: 30px; height: 30px; }
+
+  .cartItem .wrapTotalPriceOfCart {
+    grid-column: 2;
+    gap: 8px;
+  }
+
+  .lablelPrice { font-size: 12px; }
+  .valueTotalPrice { font-size: 16px; }
+  .cartItem .btnRemove { width: 32px; height: 32px; }
+
+  .cartItem:not(:last-child) { padding-bottom: 18px; border-bottom: 1px solid #ddd; }
+
+  .wrapInfoOrder { padding: 0 0 24px; }
+  .wrapInfoOrder .infoOrder { padding: 22px 18px 24px; }
+  .wrapInfoOrder .infoOrder .titleOrder { font-size: 20px; line-height: 1.4; }
+  .wrapInfoOrder .infoOrder .wrapPriceTotal { margin-top: 12px; font-size: 14px; }
+  .btnCheckout,
+  .wrapInfoOrder .infoOrder .btnCheckout_buy {
+    height: 46px;
+    margin-top: 13px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .containerPage { padding-left: 10px; padding-right: 10px; }
+  .cartItem { grid-template-columns: 62px minmax(0, 1fr); column-gap: 10px; }
+  .cartItem .img, .cartItem > .img { width: 62px; height: 82px; }
+  .nameCart { font-size: 14px; }
+  .wrapInfoOrder .infoOrder { padding-left: 14px; padding-right: 14px; }
+}
