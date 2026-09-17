@@ -200,10 +200,37 @@ function loadPageDependOnFeature() {
                               Hình Ảnh Sản Phẩm
                             </p>
                             <div>
-                              <button type="button" id="uploadButton">Upload ảnh</button>
-                              <button type="button" id="removeImage">Gỡ hình ảnh</button>
-                              <div class="image" id="imageContainer">
-                                <img src="<?php echo $dataProduct['AnhMinhHoa']; ?>" alt="<?php echo $dataProduct['AnhMinhHoa'] ?>" style="width: 200px; height: 200px; object-fit: cover;">
+                              <input type="file" id="anhSanPhamInputEdit" accept="image/*" multiple style="display: none;">
+                              <button type="button" onclick="document.getElementById('anhSanPhamInputEdit').click();">
+                                Thêm ảnh mới
+                              </button>
+                              <div id="imageContainerEdit" style="
+                                display: flex;
+                                flex-wrap: wrap;
+                                align-items: flex-start;
+                                gap: 8px;
+                                width: 100%;
+                                max-width: 500px;
+                                min-height: 140px;
+                                height: auto;
+                                padding: 10px;
+                                margin-top: 10px;
+                                border: 2px dotted rgb(11, 140, 246);
+                                box-sizing: border-box;
+                              ">
+                                <?php if (!empty($danhSachAnhCu)): ?>
+                                  <?php foreach ($danhSachAnhCu as $anh): ?>
+                                    <div class="anh-cu-wrapper" style="position: relative; display: inline-block; margin: 4px;">
+                                      <img src="<?php echo $anh['DuongDan']; ?>" style="width: 120px; height: 120px; object-fit: cover; border-radius: 6px; border: 1px solid #ccc;">
+                                      <button type="button" class="btn-xoa-anh-cu" data-maanh="<?php echo $anh['MaAnh']; ?>" style="position: absolute; top: 2px; right: 2px; background: rgba(200,0,0,0.7); color: white; border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer;">x</button>
+                                    </div>
+                                  <?php endforeach; ?>
+                                <?php else: ?>
+                                  <!-- Sản phẩm cũ chưa có ảnh nào trong gallery, chỉ có ảnh đại diện -->
+                                  <div style="position: relative; display: inline-block; margin: 4px;">
+                                    <img src="<?php echo $dataProduct['AnhMinhHoa']; ?>" style="width: 120px; height: 120px; object-fit: cover; border-radius: 6px; border: 1px solid #ccc;">
+                                  </div>
+                                <?php endif; ?>
                               </div>
                             </div>
                           </div>
