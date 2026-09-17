@@ -6,16 +6,16 @@
 
                 <div class="map">
                     <i class="fa-solid fa-location-dot"></i>
-                    <span>An Dương Vương, Phường 3, Quận 5</span>
+                    <span>Số 1, Võ Oanh, Phường Thạnh Mỹ Tây, Bình Thạnh, TP. HCM</span>
                 </div>
 
                 <div class="phone">
                     <i class="fa-solid fa-phone-volume"></i>
-                    <span>0325459901</span>
+                    <span>0909090909</span>
                 </div>
                 <div class="mail">
                     <i class="fa-solid fa-envelope"></i>
-                    <span>doanhdaigr5.2004@gmail.com</span>
+                    <span>wineshop.support@gmail.com</span>
                 </div>
             </div>
 
@@ -41,14 +41,12 @@
 
             <div class="fourth">
                 <h4>FOLLOW US</h4>
-                <a href="https://www.facebook.com/doanhdai.2004"><i id="fb" class="fa-brands fa-facebook" id="fb"></i></a>
-                <a href="https://www.instagram.com"><i id="ig" class="fa-brands fa-instagram"></i></a>
-                <a href="https://github.com/ltgiai/DO_AN_WEBSITE/tree/main"><i id="git" class="fa-brands fa-github"></i></a>
-                <a href="https://twitter.com/?lang=vi"><i id="tw" class="fa-brands fa-square-twitter"></i></a>
+                <a href="https://github.com/nguyendat6706-hash/baitapcuoikiy"><i id="git" class="fa-brands fa-github"></i></a>
+            
 
             </div>
         </div>
         <div class="footer-bottom">
-            <p>Copyrights © 2019 by comebuy_vn. All rights reserved.</p>
+            <p>Copyrights © 2026 by [Nhóm 4/WINE SHOP]. All rights reserved.</p>
         </div>
     </section>
