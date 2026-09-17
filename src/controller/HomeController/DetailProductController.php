@@ -13,6 +13,13 @@ class DetailProductController {
   public function display() {
     global $projectRoot;
     $dataProduct = $this->requestUrl();
+
+    // Lấy danh sách ảnh phụ của sản phẩm để hiển thị gallery (Ngày 3)
+    require_once "$projectRoot/src/model/ProductModels/AnhSanPhamModel.php";
+    $modelAnh = new AnhSanPhamModel();
+    $ketQuaAnh = $modelAnh->layAnhTheoSanPham($dataProduct['MaSanPham']);
+    $danhSachAnhPhu = ($ketQuaAnh->status == 200) ? $ketQuaAnh->data : [];
+
     // require_once "$projectRoot/src/view/include/header.php";
     require_once "$projectRoot/src/view/home/detailProduct.php";
     // require_once "$projectRoot/src/view/include/footer.php";
