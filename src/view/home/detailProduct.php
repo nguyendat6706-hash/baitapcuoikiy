@@ -34,10 +34,25 @@
             <img src="<?php echo $dataProduct['AnhMinhHoa'] ?>" alt="" class="product_img">
           </div>
           <div class="slider__wrapper">
-            <div class="image__list_new">
-              <div class="image_product_new view_more_image ">
-              </div>
-              <img class="active_image image_product_new" src="<?php echo $dataProduct['AnhMinhHoa'] ?>" alt="thumbnail">
+            <div class="image__list_new" style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <?php if (!empty($danhSachAnhPhu)): ?>
+                <?php foreach ($danhSachAnhPhu as $anh): ?>
+                  <img
+                    class="image_product_new"
+                    src="<?php echo $anh['DuongDan']; ?>"
+                    alt="thumbnail"
+                    style="width: 70px; height: 70px; object-fit: cover; border-radius: 6px; border: 2px solid transparent; cursor: pointer;"
+                    onclick="
+                      document.querySelector('.product_img').src = this.src;
+                      document.querySelectorAll('.image_product_new').forEach(el => el.style.borderColor = 'transparent');
+                      this.style.borderColor = '#000';
+                    "
+                  >
+                <?php endforeach; ?>
+              <?php else: ?>
+                <!-- Sản phẩm cũ tạo trước khi có tính năng nhiều ảnh: chỉ hiện 1 ảnh đại diện -->
+                <img class="active_image image_product_new" src="<?php echo $dataProduct['AnhMinhHoa'] ?>" alt="thumbnail" style="width: 70px; height: 70px; object-fit: cover; border-radius: 6px; border: 2px solid #000;">
+              <?php endif; ?>
             </div>
           </div>
         </div>
