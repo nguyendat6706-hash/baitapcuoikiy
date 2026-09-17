@@ -1,6 +1,8 @@
 let absolutePath;
 let totalPages = 2;
 let danhSachAnhAll = []; // Mảng chứa các ảnh (base64) đã chọn — dùng riêng cho form Tạo sản phẩm nhiều ảnh
+let danhSachAnhMoiEdit = []; // Ảnh MỚI thêm vào khi Sửa sản phẩm (base64) — dùng riêng cho form Sửa
+let danhSachMaAnhCanXoa = []; // Mã các ảnh CŨ bị đánh dấu xóa khi Sửa sản phẩm
 
 $(document).ready(() => {
   // Function to handle setStatus button click
@@ -163,14 +165,16 @@ $(document).ready(() => {
     // Tạo một đối tượng FormData từ form
     showIntervention(() => {
       const formData = new FormData();
-      if (absolutePath !== undefined && absolutePath !== null && absolutePath !== "") {
-        console.log(1);
-        formData.append('AnhMinhHoa', absolutePath); // Đường dẫn tuyệt đối của ảnh
-      } else {
-        const img = $(event.currentTarget).find('img').attr('alt');
-        console.log(img);
-        formData.append('AnhMinhHoa', img)
-      }
+
+      // Gửi ảnh mới thêm (base64)
+      danhSachAnhMoiEdit.forEach((base64) => {
+        formData.append('anhMoi[]', base64);
+      });
+
+      // Gửi mã các ảnh cũ bị đánh dấu xóa
+      danhSachMaAnhCanXoa.forEach((maAnh) => {
+        formData.append('maAnhXoa[]', maAnh);
+      });
 
       $(".updateProduct input").each(function() {
         formData.append($(this).attr('name'), $(this).val());
@@ -209,47 +213,58 @@ $(document).ready(() => {
     });
   });
 
-  $('#uploadButton').click((event) => {
-    // Tạo một input[type="file"]
-    let input = document.createElement('input');
-    input.type = 'file';
+  // ============ XỬ LÝ THÊM ẢNH MỚI (trang Sửa sản phẩm) ============
+  $('#anhSanPhamInputEdit').on('change', function() {
+    const files = this.files;
+    if (!files || files.length === 0) return;
 
-    // Bắt sự kiện change khi người dùng chọn ảnh
-    input.addEventListener('change', function() {
-      let file = this.files[0];
-      if (file) {
-        // absolutePath = file.webkitRelativePath || file.name;
-        // console.log("Đường dẫn tuyệt đối của tệp ảnh: " + absolutePath);
-        let reader = new FileReader();
-
-        // Bắt sự kiện load khi đọc ảnh thành công
-        reader.addEventListener('load', function() {
-          // Hiển thị ảnh trên giao diện
-          let image = document.createElement('img');
-          image.src = reader.result;
-          absolutePath = image.src;
-          document.getElementById('imageContainer').innerHTML = '';
-          document.getElementById('imageContainer').appendChild(image);
-
-          // Thêm CSS cho ảnh
-          let style = document.createElement('style');
-          style.innerHTML = '#imageContainer img { width: 200px; height: 200px; object-fit: cover; }';
-          document.head.appendChild(style);
-        });
-
-        // Đọc dữ liệu của file ảnh
-        reader.readAsDataURL(file);
-      }
+    Array.from(files).forEach((file) => {
+      const reader = new FileReader();
+      reader.addEventListener('load', function() {
+        danhSachAnhMoiEdit.push(reader.result);
+        renderAnhMoiEdit();
+      });
+      reader.readAsDataURL(file);
     });
 
-    // Kích hoạt sự kiện click cho input[type="file"]
-    input.click();
+    this.value = '';
   });
 
-  $('#removeImage').click(() => {
-    // Xóa hình ảnh khỏi phần tử có id là "imageContainer"
-    document.getElementById('imageContainer').innerHTML = '';
-    absolutePath = ""
+  // Vẽ lại các ảnh MỚI (chưa lưu DB) — viền xanh lá để phân biệt với ảnh cũ
+  function renderAnhMoiEdit() {
+    $('.anh-moi-wrapper').remove(); // xóa hết ảnh mới cũ đã vẽ, vẽ lại từ đầu cho đúng thứ tự
+
+    danhSachAnhMoiEdit.forEach((base64, index) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'anh-moi-wrapper';
+      wrapper.style.cssText = 'position: relative; display: inline-block; margin: 4px;';
+
+      const img = document.createElement('img');
+      img.src = base64;
+      img.style.cssText = 'width: 120px; height: 120px; object-fit: cover; border-radius: 6px; border: 2px solid #2ecc71;';
+
+      const btnRemove = document.createElement('button');
+      btnRemove.type = 'button';
+      btnRemove.innerText = 'x';
+      btnRemove.style.cssText = 'position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer;';
+      btnRemove.addEventListener('click', () => {
+        danhSachAnhMoiEdit.splice(index, 1);
+        renderAnhMoiEdit();
+      });
+
+      wrapper.appendChild(img);
+      wrapper.appendChild(btnRemove);
+      document.getElementById('imageContainerEdit').appendChild(wrapper);
+    });
+  }
+
+  // Đánh dấu xóa 1 ảnh CŨ (chưa xóa DB ngay, chỉ xóa thật khi bấm Submit)
+  $(document).on('click', '.btn-xoa-anh-cu', function() {
+    const maAnh = $(this).attr('data-maanh');
+    if (maAnh) {
+      danhSachMaAnhCanXoa.push(maAnh);
+    }
+    $(this).closest('.anh-cu-wrapper').remove();
   });
 
   // ============ XỬ LÝ CHỌN NHIỀU ẢNH (chỉ dùng cho trang Tạo sản phẩm) ============
