@@ -18,6 +18,13 @@ class EditProductController {
     $dataGetLoaiSanPham = $modelLoaiSanPham->getAllTypeProduct(null, null)->data;
     $modelProduct = new ProductModel();
     $dataProduct = $modelProduct->getProductById($this->maSanPham)->data; // Sử dụng $this->maSanPham
+
+    // Lấy danh sách ảnh hiện có của sản phẩm (Ngày 3)
+    require_once "$projectRoot/src/model/ProductModels/AnhSanPhamModel.php";
+    $modelAnh = new AnhSanPhamModel();
+    $ketQuaAnh = $modelAnh->layAnhTheoSanPham($this->maSanPham);
+    $danhSachAnhCu = ($ketQuaAnh->status == 200) ? $ketQuaAnh->data : [];
+
     require "$projectRoot/src/view/admin/product/editProduct.php";
   }
   public function updateRequest() {
@@ -48,11 +55,38 @@ class EditProductController {
             $theTich = $_POST['TheTich'];
             $xuatXu = $_POST['XuatXu'];
             $thuongHieu = $_POST['ThuongHieu'];
-            $anhMinhHoa = $_POST['AnhMinhHoa'];
             $maLoaiSanPham = $_POST['loaiSanPham'];
 
             // ==== Mô tả sản phẩm lấy từ CKEditor (Quang Huy) ====
             $moTa = isset($_POST['MoTa']) ? $_POST['MoTa'] : '';
+
+            // ==== Xử lý ảnh mới thêm + ảnh bị đánh dấu xóa (Ngày 3 - Đạt) ====
+            global $projectRoot;
+            require_once "$projectRoot/src/model/ProductModels/AnhSanPhamModel.php";
+            $modelAnh = new AnhSanPhamModel();
+
+            $mangAnhMoi = isset($_POST['anhMoi']) ? $_POST['anhMoi'] : [];
+            $mangMaAnhXoa = isset($_POST['maAnhXoa']) ? $_POST['maAnhXoa'] : [];
+
+            // Xóa các ảnh bị đánh dấu xóa
+            foreach ($mangMaAnhXoa as $maAnhCanXoa) {
+              $modelAnh->xoaAnh($maAnhCanXoa);
+            }
+
+            // Thêm các ảnh mới (nếu có)
+            if (is_array($mangAnhMoi) && count($mangAnhMoi) > 0) {
+              $modelAnh->themNhieuAnh($maSanPham, $mangAnhMoi);
+            }
+
+            // Lấy lại danh sách ảnh sau cùng để xác định ảnh đại diện (AnhMinhHoa) mới
+            $ketQuaAnhSauCung = $modelAnh->layAnhTheoSanPham($maSanPham);
+            if ($ketQuaAnhSauCung->status == 200 && count($ketQuaAnhSauCung->data) > 0) {
+              $anhMinhHoa = $ketQuaAnhSauCung->data[0]['DuongDan'];
+            } else {
+              // Không còn ảnh nào trong gallery -> giữ nguyên ảnh đại diện cũ, tránh mất ảnh hoàn toàn
+              $sanPhamCu = $modelProduct->getProductById($maSanPham)->data;
+              $anhMinhHoa = $sanPhamCu['AnhMinhHoa'];
+            }
 
             // Thực hiện cập nhật sản phẩm
             $result = $modelProduct->updateProduct($maSanPham, $tenSP, $theTich, $gia, $nongDoCon, $xuatXu, $thuongHieu, $anhMinhHoa, $maLoaiSanPham, $moTa);
